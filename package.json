@@ -9,9 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@reduxjs/toolkit": "^1.8.2",
+    "@types/bcrypt": "^5.0.0",
+    "antd": "^4.20.7",
+    "bcryptjs": "^2.4.3",
+    "mongodb": "^4.7.0",
     "next": "12.1.6",
+    "next-auth": "3.29.3",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-redux": "^8.0.2",
+    "react-toastify": "^9.0.5",
+    "redux-persist": "^6.0.0",
+    "redux-toolkit": "^1.1.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.8",
