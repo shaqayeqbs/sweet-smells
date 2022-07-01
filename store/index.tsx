@@ -1,34 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
 import messageSlice from "../modules/message";
 import authSlice from '../modules/auth';
+import cartSlice from "../modules/cart";
 import { combineReducers } from "@reduxjs/toolkit";
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-// virgool.io/@samAghapour/sam-aghapour-redux-yunzd2ulqjyc
-import {
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-} from 'redux-persist'
+
+
 const reducers = combineReducers({
     message: messageSlice.reducer,
     auth: authSlice.reducer,
+    cart: cartSlice.reducer
 });
-const persistConfig = {
-    key: 'root',
-    storage
-};
-const persistedReducer = persistReducer(persistConfig, reducers);
+
 const store = configureStore({
-    reducer: persistedReducer,
+    reducer: reducers,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
+            serializableCheck: false
         }),
 })
 export default store;

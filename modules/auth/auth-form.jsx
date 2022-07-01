@@ -9,9 +9,7 @@ import { messageActions } from "../message/index";
 function AuthForm() {
   const dispatch = useDispatch();
   //---------------------------------------- SELECTORS
-  const userToken = useSelector((state) => state.auth.token);
-  const status = useSelector((state) => state.auth.status);
-  const loading = useSelector((state) => state.auth.loading);
+
   const serverMessage = useSelector((state) => state.auth.serverMessage);
 
   const emailInputRef = useRef();
@@ -34,24 +32,20 @@ function AuthForm() {
     // optional: Add validation
 
     if (isLogin) {
-      console.log("here");
       const result = await signIn("credentials", {
         redirect: false,
         email: email,
         password: password,
       });
-      console.log(result, "res");
 
       if (!result.error) {
         router.replace("/");
       } else {
-        console.log("errorrr");
         dispatch(messageActions.setMessage(result.error));
       }
     } else {
       const fullname = nameInputRef.current.value;
       try {
-        console.log(fullname, email, password);
         const gender = male;
         const data = { email, password, fullname, gender };
         const result = await dispatch(signUpUser(data));
@@ -59,7 +53,6 @@ function AuthForm() {
         dispatch(messageActions.setMessage(serverMessage));
         dispatch(messageActions.cleanMessage());
       } catch (error) {
-        console.log(error);
         dispatch(messageActions.setMessage(error));
       }
     }

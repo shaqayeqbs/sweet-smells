@@ -21,11 +21,10 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUser.pending, (state, action) => {
-      (state.status = 'AUTH_SIGNIN_REQUEST'), (state.loading = true);
+      (state.status = "AUTH_SIGNIN_REQUEST"), (state.loading = true);
     });
     builder.addCase(fetchUser.fulfilled, (state, action) => {
       if (action.payload) {
-        console.log(action.payload, "success");
         state.status = action.payload.status;
         state.serverMessage = action.payload.message;
         state.loading = false;
@@ -36,12 +35,11 @@ const authSlice = createSlice({
     });
     builder.addCase(fetchUser.rejected, (state, action) => {
       state.loading = false;
-      state.status = 'AUTH_SIGNIN_FAILED';
-      console.log(action.payload, "rej");
+      state.status = "AUTH_SIGNIN_FAILED";
     });
     builder.addCase(signUpUser.pending, (state) => {
       state.lastTry = new Date().toISOString();
-      state.status = 'AUTH_SIGNIN_REQUEST';
+      state.status = "AUTH_SIGNIN_REQUEST";
       state.loading = true;
     });
     builder.addCase(signUpUser.fulfilled, (state, action) => {
@@ -53,7 +51,7 @@ const authSlice = createSlice({
       }
     });
     builder.addCase(signUpUser.rejected, (state) => {
-      state.status = 'AUTH_SIGNUP_FAILED';
+      state.status = "AUTH_SIGNUP_FAILED";
       state.loading = false;
     });
   },
@@ -64,7 +62,7 @@ export const fetchUser = createAsyncThunk(
 );
 export const signUpUser = createAsyncThunk(
   "user/signUpUser",
-  async ({ fullname , email, password}) => {
+  async ({ fullname, email, password }) => {
     return signupService(email, password, fullname);
   }
 );

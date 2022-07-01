@@ -8,13 +8,13 @@ const Description = (props) => {
     setShowDetail((prevState) => !prevState);
   }
   return (
-    <div class={classes.dropdown}>
-      <button onClick={dorpdowbHandler} class={classes.dropbtn}>
+    <div className={classes.dropdown}>
+      <button onClick={dorpdowbHandler} className={classes.dropbtn}>
         <div>Dropdown</div>
         <div className={classes.downIcon}><DownIcon /></div>
       </button>
       {showDetail && (
-        <div class={classes["dropdown-content"]}>
+        <div className={classes["dropdown-content"]}>
           <div>
             An aromatic-woody scent with citrus notes accentuated by sandalwood
             and cedar. A fresh and invigorating fragrance.Woody, aromatic musk

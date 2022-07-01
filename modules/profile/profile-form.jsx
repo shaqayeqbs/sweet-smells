@@ -4,11 +4,10 @@ import { useSession } from "next-auth/client";
 
 function ProfileForm(props) {
   const [session] = useSession();
-  console.log(session);
   const username = session?.user?.name;
   const email = session?.user.email;
   const gender = session?.user.image;
-  console.log(gender, "oops");
+
   ///
   const nameRef = useRef();
   const emailRef = useRef();
@@ -21,7 +20,6 @@ function ProfileForm(props) {
     const enteredemail = emailRef.current.value;
     const enteredgender = genderRef.current.value;
 
-    console.log(gender, "gen");
     // Add validation
 
     props.onChangeProfile({

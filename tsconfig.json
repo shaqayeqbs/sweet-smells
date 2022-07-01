@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "icons/shopping-bag.jsx", "lib/auth.jsx", "pages/auth.jsx", "pages/api/auth/signup.jsx", "modules/auth/service.js", "modules/auth/auth-form.jsx", "modules/message/index.js", "pages/perfumes/index.tsx", "modules/shop/detail/item-detail.jsx", "pages/_app.jsx", "pages/[gender].jsx", "modules/shop/detail/description.jsx", "modules/shop/item.jsx", "modules/shop/list.jsx", "pages/perfumes/[perfumId].jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "icons/shopping-bag.jsx", "lib/auth.jsx", "pages/auth.jsx", "pages/api/auth/signup.jsx", "modules/auth/service.js", "modules/auth/auth-form.jsx", "modules/message/index.js", "pages/perfumes/index.tsx", "modules/shop/detail/item-detail.jsx", "pages/_app.jsx", "pages/[gender].jsx", "modules/shop/detail/description.jsx", "modules/shop/item.jsx", "modules/shop/list.jsx", "pages/perfumes/[perfumId].jsx", "modules/layout/main-header.jsx", "modules/layout/layout.jsx"],
   "exclude": ["node_modules"]
 }

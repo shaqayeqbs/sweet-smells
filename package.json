@@ -9,26 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@heroicons/react": "^1.0.6",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.5",
     "@reduxjs/toolkit": "^1.8.2",
     "@types/bcrypt": "^5.0.0",
-    "antd": "^4.20.7",
     "bcryptjs": "^2.4.3",
     "mongodb": "^4.7.0",
     "next": "12.1.6",
     "next-auth": "3.29.3",
+    "rc-dropdown": "^4.0.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-redux": "^8.0.2",
+    "react-responsive-carousel": "^3.2.23",
     "react-toastify": "^9.0.5",
-    "redux-persist": "^6.0.0",
     "redux-toolkit": "^1.1.2",
-    "yup": "^0.32.11"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/node": "17.0.8",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.5",
+    "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.5.0",
     "eslint-config-next": "12.1.6",
     "typescript": "4.7.3"

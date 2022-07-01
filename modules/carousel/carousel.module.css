@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  height: 40rem;
+}
+
+.sliderContainer {
+  object-fit: cover;
+  margin: 0 auto;
+  overflow: hidden;
+  height: min-content;
+  height: 50rem;
+  width: 95%;
+}
+.sliderContainer img{
+  width: 90%;
+  height: 40rem;
+}
+.img {
+  height: 100%;
+}
+
+.slideritemdiv {
+  object-fit: cover;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.carouselstyle {
+  height: 100% !important;
+}
+.img {
+  height: 50%;
+}

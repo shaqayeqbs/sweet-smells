@@ -3,13 +3,10 @@ import Link from "next/link";
 import classes from "./item.module.css";
 import Image from "next/image";
 
-
 const Item = (props) => {
   const { title, id, image, price } = props;
-  console.log(id, "id");
   const exploredLink = `/perfumes/${id}`;
   return (
-    
     <li className={classes.container}>
       <Link href={exploredLink}>
         <div>

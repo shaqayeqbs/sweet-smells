@@ -3,9 +3,7 @@ import Item from "./item";
 import classes from "./list.module.css";
 
 const List = (props) => {
-  console.log(props);
   const { items } = props;
-  console.log(items, "itemsssssssssss");
   return (
     <ul>
       <div className="row">
