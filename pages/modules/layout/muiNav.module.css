@@ -1,0 +1,86 @@
+.icon,
+.icon div {
+  display: inline-block;
+  width: 1.8rem;
+  margin: 1rem auto;
+  border: none;
+  background-color: transparent;
+  
+}
+
+.leftNav {
+  font-size: 19px;
+  margin-top: 1.8rem;
+}
+
+.buttonicon {
+  position: relative;
+  height: 1rem;
+  display: inline-block;
+  width: 2.4rem;
+  padding-bottom: 0.4rem;
+  margin: 1rem auto;
+  border: none;
+  background-color: transparent;
+  z-index: 100;
+}
+
+.icon {
+  width: 1.45rem;
+  height: 1.3rem;
+  margin-right: 0.5rem;
+}
+.parent {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  right: -0.7rem;
+  bottom: 0.8rem;
+  color: white;
+  background-color: #9f5ccc;
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 50px;
+  border: 1px solid #9f5ccc;
+  border-radius: 50%;
+  font-weight: bold;
+  z-index: -1;
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+.usericon {
+  display: block;
+  width: 1rem;
+  margin: 0;
+}
+.detail {
+  display: none;
+}
+.usericon:hover + .detail {
+  border: 1px solid blue;
+  margin-top: 2rem;
+  display: block;
+  z-index: 100;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

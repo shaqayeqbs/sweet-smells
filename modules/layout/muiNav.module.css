@@ -1,8 +1,10 @@
 .icon,
 .icon div {
   display: inline-block;
-  width: 1.8rem;
   margin: 1rem auto;
+  width: 1.8rem;
+  height: 1.3rem;
+
   border: none;
   background-color: transparent;
   
@@ -19,17 +21,13 @@
   display: inline-block;
   width: 2.4rem;
   padding-bottom: 0.4rem;
-  margin: 1rem auto;
+  margin: .9rem auto;
   border: none;
   background-color: transparent;
   z-index: 100;
 }
 
-.icon {
-  width: 1.45rem;
-  height: 1.3rem;
-  margin-right: 0.5rem;
-}
+
 .parent {
   position: relative;
 }

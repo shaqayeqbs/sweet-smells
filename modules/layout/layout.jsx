@@ -19,7 +19,9 @@ const Layout = (props) => {
       {cartIsShown && <Cart onHideCart={hideCartHandler} />}
       <MuiNav onShowCart={showCartHandler} onHideCart={hideCartHandler} />
       <main className={classes.layout}>{props.children}</main>
-      {/* <Footer /> */}
+  <div className={classes.footer}>
+  <Footer />
+  </div>
     </>
   );
 };

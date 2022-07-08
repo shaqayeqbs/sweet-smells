@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import NextJsCarousel from '../modules/carousel/index'
+import NextJsCarousel from '../modules/carousel/index';
+import Summary from '../modules/homeDesign/summary';
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,8 @@ const Home: NextPage = () => {
 
       <main>
         <NextJsCarousel />
-        <h2>Perfumes are made when a carefully created blend of essential scented oils are mixed in solvents – typically alcohol and water. The life cycle of a fragrance is three-timed (think of it as a disappearing pyramid of notes), starting with the top, moving onto the heart, and finally settling with the base notes. </h2>
+        <Summary/>
+     
       </main>
 
 

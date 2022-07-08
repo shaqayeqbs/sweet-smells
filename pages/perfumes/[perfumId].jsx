@@ -1,7 +1,7 @@
 import React from "react";
 import { getAllPerfumes } from "../../modules/shop/service";
 import ItemDetail from "../../modules/shop/detail/item-detail";
-import item from "../../modules/shop/item";
+
 
 const Detail = (props) => {
   const { size, id, image, title, price } = props;

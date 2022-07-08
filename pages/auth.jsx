@@ -1,3 +1,4 @@
+import React from "react";
 import AuthForm from "../modules/auth/auth-form";
 import { getSession } from "next-auth/client";
 import { useEffect, useState } from "react";

@@ -1,0 +1,41 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.dropbtn {
+  display: flex;
+  place-content: space-between;
+  text-align: left;
+  background-color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  color: #b25ef7;
+}
+
+.dropdown-content {
+  width: 100%;
+  display: block;
+  position: absolute;
+  min-width: 160px;
+  overflow: auto;
+  z-index: 1000;
+}
+
+.dropdown-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+}
+.downIcon{
+  width: 1.5rem;
+}

@@ -10,7 +10,10 @@ async function handler(req, res) {
   try {
     const Collection = client.db().collection("perfumes");
     const data = await Collection.find().toArray();
-    res.status(200).json({ perfumes: data });
+
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ perfumes: data }));
   } catch (error) {
     res.status(500).json({ message: "Getting collection failed." });
   }

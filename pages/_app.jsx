@@ -1,3 +1,4 @@
+import React from "react";
 import DashboardLayout from "../modules/layout/layout";
 import "../styles/globals.css";
 import store from "../store";

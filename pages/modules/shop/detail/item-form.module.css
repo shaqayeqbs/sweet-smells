@@ -1,0 +1,35 @@
+.form {
+  text-align: left;
+}
+
+.button {
+  width: 100%;
+  color: white;
+  background-color: black;
+  border-radius: 4px;
+  margin: 2rem auto;
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  color: rgb(186, 82, 218);
+}
+.container {
+  width: 100%;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.form label {
+  margin: 0 1rem 0 0;
+  font-weight: bold;
+}
+.form input {
+  margin-bottom: 0.5rem;
+  width: 20%;
+  margin-top: 1rem;
+}

@@ -1,32 +1,38 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import React from "react";
 
 import { verifyPassword } from "../../../lib/auth";
 import { connectToDatabase } from "../../../lib/db";
 
+import CredentialsProvider from "next-auth/providers/credentials";
+
+let myuser;
 export default NextAuth({
   session: {
-    jwt: true,
+    strategy: "jwt",
   },
   providers: [
-    Providers.Credentials({
-      async authorize(credentials) {
+    CredentialsProvider({
+      name: "Credentials",
+      async authorize(credentials, req) {
+        console.log(credentials);
         const client = await connectToDatabase();
 
         const usersCollection = client.db().collection("users");
 
-        const user = await usersCollection.findOne({
+        myuser = await usersCollection.findOne({
           email: credentials.email,
         });
 
-        if (!user) {
+        if (!myuser) {
           client.close();
           throw new Error("No user found!");
         }
 
         const isValid = await verifyPassword(
           credentials.password,
-          user.password
+          myuser.password
         );
 
         if (!isValid) {
@@ -34,9 +40,35 @@ export default NextAuth({
           throw new Error("Could not log you in!");
         }
 
+        console.log(myuser.rule, "heyyyyyyyyyyyyyyyyyyyy", myuser);
         client.close();
-        return { email: user.email, name: user.name, image: "hi" };
+        return {
+          name: myuser.name,
+          email: myuser.email,
+          image: myuser.rule,
+          gender: myuser.gender,
+          rule: myuser.rule,
+        };
       },
     }),
   ],
+  // callbacks: {
+  //   async jwt({ token, account }) {
+  //     console.log(token, account, "acooooooooo");
+  //     // Persist the OAuth access_token to the token right after signin
+  //     if (account) {
+  //       token.accessToken = account.access_token;
+  //       return token;
+  //     }
+  //   },
+  //   async session({ session, token, user }) {
+  //     console.log(session, token, user, "seeeeeeeeeeeeeeeeee", myuser.rule);
+  //     if (session) {
+  //       session.user.isAdmin = myuser.rule;
+  //       // Send properties to the client, like an access_token from a provider.
+  //       // session.accessToken = token.accessToken;
+  //       return Promise.resolve(session);
+  //     }
+  //   },
+  // },
 });

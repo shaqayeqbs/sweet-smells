@@ -8,6 +8,7 @@ import Link from "next/link";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import React from "react";
+import Add from "../../icons/add";
 
 function NavItem() {
   const [session] = useSession();
@@ -43,6 +44,15 @@ function NavItem() {
     </div>,
     <div>
       {session && (
+        <Link href="/admin/add-new-product" passHref>
+          <a className={classes.icon}>
+            <Add />
+          </a>
+        </Link>
+      )}
+    </div>,
+    <div>
+      {session && (
         <div className={classes.profile}>
           <Link href="/profile" passHref>
             <a>
@@ -72,7 +82,7 @@ function NavItem() {
   ];
   return (
     <>
-      {navItemsMob.map((item,index) => (
+      {navItemsMob.map((item, index) => (
         <ListItem key={index} disablePadding>
           <ListItemText primary={item} />
         </ListItem>

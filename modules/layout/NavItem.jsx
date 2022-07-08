@@ -10,6 +10,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useSelector } from "react-redux";
 import CustomizedTooltips from "./tooltip/tooltip";
+import Add from "../../icons/add";
 
 function NavItem(props) {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
@@ -52,9 +53,24 @@ function NavItem(props) {
         </Link>
       )}
     </div>,
-    <div className={classes.icon}>
-      <Search />
+    <div>
+      {session && (
+        <Link href="/admin/add-new-product" passHref>
+          <a className={classes.icon}>
+            <Add />
+          </a>
+        </Link>
+      )}
     </div>,
+
+    <div className={classes.icon}>
+      <Link href="/search" passHref>
+        <span>
+          <Search />
+        </span>
+      </Link>
+    </div>,
+
     <div>
       {session && (
         <Link href="/profile">
