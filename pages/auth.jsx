@@ -4,7 +4,7 @@ import { getSession } from "next-auth/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-const auth = () => {
+const Auth = () => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
@@ -29,4 +29,4 @@ const auth = () => {
   );
 };
 
-export default auth;
+export default Auth;
