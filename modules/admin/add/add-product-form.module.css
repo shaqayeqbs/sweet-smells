@@ -27,7 +27,7 @@
 
 .actions {
   margin-top: 1rem;
-  text-align: right;
+  text-align: center;
 }
 
 .actions button {
@@ -53,13 +53,16 @@
   border: 1px solid rgb(172, 73, 192);
 }
 
-.radio {
-  display: flex;
-  place-content: space-between;
-  padding-right: 2rem;
-  width: 10%;
-  color: rgb(68, 66, 66);
-  font-size: 12px;
+.controlradio {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #353336;
+  text-align: left;
+}
+.controlradio input {
+  margin: 2rem;
+  margin-right: 1rem;
 }
 .padding {
   margin-right: 4rem;

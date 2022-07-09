@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 const AddProductForm = () => {
   const dispatch = useDispatch();
-  const router=useRouter();
+  const router = useRouter();
 
   const titleInputRef = useRef();
   const imageInputRef = useRef();
@@ -34,7 +34,7 @@ const AddProductForm = () => {
     const res = await AddPerfume(perfume);
     dispatch(messageActions.setMessage(res.message));
     dispatch(messageActions.cleanMessage());
-    router.replace('/perfumes')
+    router.replace("/perfumes");
   };
   return (
     <div className={classes.container}>
@@ -62,31 +62,26 @@ const AddProductForm = () => {
           <input type="text" required id="size" ref={sizeInputRef} />
         </div>
 
-        <div className={classes.control}>
-          <label htmlFor="gender">Gender</label>
-          <div className={classes.radio}>
-            <label>men</label>
-            <input
-              className={classes.padding}
-              type="radio"
-              required
-              id="men"
-              value="men"
-              ref={genderInputRef}
-            />
-
-            <label>women</label>
-            <input
-              className={classes.padding}
-              type="radio"
-              required
-              id="women"
-              value="women"
-              ref={genderInputRef}
-            />
-          </div>
+        <div className={classes.controlradio}>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+         
+            ref={genderInputRef}
+          />
+          <label htmlFor="female">female</label>
+          <input
+            type="radio"
+            id="male"
+            value="male"
+         
+            name="gender"
+            ref={genderInputRef}
+          />
+          <label htmlFor="male">male</label>
         </div>
-
         <div className={classes.actions}>
           <button>Add Perfume</button>
         </div>

@@ -2,7 +2,7 @@
   margin: 2rem auto;
   width: 70%;
   display: flex;
-  place-content: start;
+  place-content: flex-start;
   box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   text-align: center;
   padding: 0;
@@ -44,8 +44,37 @@
 }
 
 .dropbtn {
-  background-color: rebeccapurple;
   display: block;
   width: 100%;
   text-align: left;
+}
+@media (max-width: 768px) {
+  .container {
+    display: block;
+    margin: 0rem auto;
+    width: 90%;
+    padding: 0;
+  }
+  .detail h1 {
+    padding-top: 0rem;
+    font-size: 1.5rem;
+  }
+  .myimg {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+  .detailContainer {
+    margin: 0rem auto;
+    padding: 2rem;
+    padding-top: 0;
+    width: 90%;
+  }
+  .dropbtn {
+   
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
 }

@@ -4,13 +4,21 @@ import { useRouter } from "next/router";
 import { deletePerfume } from "../../admin/delete/service";
 import { useDispatch } from "react-redux";
 import { messageActions } from "../../message/index";
+import { useSession } from "next-auth/client";
 
 const ItemForm = (props) => {
   const amountInputRef = useRef();
   const dispatch = useDispatch();
   const router = useRouter();
+  const [session, loading] = useSession();
+  const isAdmin = session?.session?.user?.isAdmin === "admin" ? true : false;
+  console.log(isAdmin);
 
   const submitHandler = (event) => {
+    if (!session) {
+      dispatch(messageActions.setMessage("you should login first!"));
+      // router.replace("/auth");
+    }
     event.preventDefault();
 
     const enteredAmount = amountInputRef.current.value;
@@ -33,7 +41,7 @@ const ItemForm = (props) => {
   return (
     <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes.upcontainer}>
-        <div>
+        <div className={classes.btn}>
           {" "}
           <label className={classes.input} htmlFor="Amount">
             Amount
@@ -47,10 +55,15 @@ const ItemForm = (props) => {
           />
         </div>
 
-        <div>
+        <div className={classes.btn}>
           {" "}
-          <button onClick={deleteHandler}>Delete</button>
-          <button onClick={editHandler}>Edit</button>
+          {isAdmin && (
+            <span>
+              {" "}
+              <button onClick={deleteHandler}>Delete</button>
+              <button onClick={editHandler}>Edit</button>
+            </span>
+          )}
         </div>
       </div>
 

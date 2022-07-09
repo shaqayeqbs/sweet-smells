@@ -23,7 +23,7 @@
 .dropdown-content {
   width: 100%;
   display: block;
-  position: absolute;
+
   min-width: 160px;
   overflow: auto;
   z-index: 1000;
@@ -34,8 +34,8 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  background-color: transparent;
+  background-color: white;
 }
-.downIcon{
+.downIcon {
   width: 1.5rem;
 }

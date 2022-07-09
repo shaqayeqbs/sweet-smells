@@ -10,31 +10,36 @@ import ListItem from "@mui/material/ListItem";
 import React from "react";
 import Add from "../../icons/add";
 
-function NavItem() {
+function NavItem(props) {
   const [session] = useSession();
+  const isAdmin = session?.session?.user?.isAdmin;
   const logoutHandler = () => {
     signOut();
   };
   const navItemsMob = [
-    <li>
+    <div className={classes.mobIcon}>
       <Link href="/perfumes" passHref>
         collection
       </Link>
-    </li>,
-    <li>
+    </div>,
+    <div className={classes.mobIcon}>
       <Link href="/women" passHref>
         WOMEN
       </Link>
-    </li>,
-    <li>
+    </div>,
+    <div className={classes.mobIcon}>
       <Link href="/men" passHref>
         MEN
       </Link>
-    </li>,
+    </div>,
 
-    <Link href="/" passHref>
-      search
-    </Link>,
+    <div className={classes.mobIcon}>
+      <Link href="/search" passHref>
+        <span>
+          <Search />
+        </span>
+      </Link>
+    </div>,
     <div>
       {!session && (
         <Link href="/auth" passHref>
@@ -43,9 +48,9 @@ function NavItem() {
       )}
     </div>,
     <div>
-      {session && (
+      {isAdmin && (
         <Link href="/admin/add-new-product" passHref>
-          <a className={classes.icon}>
+          <a className={classes.mobIcon}>
             <Add />
           </a>
         </Link>
@@ -55,26 +60,18 @@ function NavItem() {
       {session && (
         <div className={classes.profile}>
           <Link href="/profile" passHref>
-            <a>
-              <span>profile</span>
+            <a className={classes.mobIcon}>
+              <span>
+                <User />
+              </span>
             </a>
           </Link>
         </div>
       )}
     </div>,
     <div>
-      {" "}
       {session && (
-        <Link href="/men" passHref>
-          <a className={classes.icon}>
-            <ShoppingBag />
-          </a>
-        </Link>
-      )}
-    </div>,
-    <div>
-      {session && (
-        <button className={classes.icon} onClick={logoutHandler}>
+        <button className={classes.mobIcon} onClick={logoutHandler}>
           <Logout />
         </button>
       )}
@@ -83,7 +80,7 @@ function NavItem() {
   return (
     <>
       {navItemsMob.map((item, index) => (
-        <ListItem key={index} disablePadding>
+        <ListItem sx={{ textAlign: "center" }} key={index} disablePadding>
           <ListItemText primary={item} />
         </ListItem>
       ))}

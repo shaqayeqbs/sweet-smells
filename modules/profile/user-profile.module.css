@@ -26,3 +26,10 @@
 .border {
   border-left: 1px solid rgb(185, 183, 183);
 }
+@media (max-width: 768px) {
+  .profile {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+  }
+}

@@ -5,17 +5,18 @@ async function handler(req, res) {
   if (req.method !== "PATCH") {
     return;
   }
+
   const session = await getSession({ req: req });
 
   if (!session) {
     res.status(401).json({ message: "Not authenticated!" });
     return;
   }
-  const userEmail = session.user.email;
+  const userEmail = session.session.user.email;
   const name = req.body.name;
   const email = req.body.email;
   const gender = req.body.gender;
-
+  
   const client = await connectToDatabase();
 
   const usersCollection = client.db().collection("users");

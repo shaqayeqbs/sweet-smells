@@ -1,13 +1,14 @@
-.icon,
-.icon div {
+.container {
   display: inline-block;
-  margin: 1rem auto;
+}
+.icon {
+  cursor: pointer;
+  display: inline-block;
+  margin: 1rem;
   width: 1.8rem;
   height: 1.3rem;
-
   border: none;
   background-color: transparent;
-  
 }
 
 .leftNav {
@@ -16,17 +17,17 @@
 }
 
 .buttonicon {
+  cursor: pointer;
   position: relative;
   height: 1rem;
   display: inline-block;
   width: 2.4rem;
   padding-bottom: 0.4rem;
-  margin: .9rem auto;
+  margin: 1rem;
   border: none;
   background-color: transparent;
   z-index: 100;
 }
-
 
 .parent {
   position: relative;
@@ -51,6 +52,7 @@
   animation: bump 300ms ease-out;
 }
 .usericon {
+  cursor: pointer;
   display: block;
   width: 1rem;
   margin: 0;
@@ -58,11 +60,9 @@
 .detail {
   display: none;
 }
-.usericon:hover + .detail {
-  border: 1px solid blue;
-  margin-top: 2rem;
-  display: block;
-  z-index: 100;
+.icon:hover,
+.buttonicon:hover {
+  color: #9f5ccc;
 }
 
 @keyframes bump {
@@ -80,5 +80,39 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+.mobIcon {
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center !important;
+  margin: 1rem auto;
+  width: 1.8rem;
+  margin-right: 1rem;
+  height: 0.8rem;
+  border: none;
+}
+.mobIcon:hover,
+.mobbtnIcon:hover {
+  color: #9f5ccc;
+}
+.mobbtnIcon {
+  cursor: pointer;
+  position: relative;
+
+  display: inline-block;
+  width: 3.5rem;
+  padding-bottom: 0.4rem;
+  margin: 1;
+  border: none;
+  background-color: transparent;
+  z-index: 100;
+}
+
+@media only screen and (max-width: 800px) {
+  .container {
   }
 }

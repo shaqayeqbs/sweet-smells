@@ -11,6 +11,7 @@ const auth = () => {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
+        console.log(session, "session");
         router.replace("/");
       } else {
         setIsLoading(false);

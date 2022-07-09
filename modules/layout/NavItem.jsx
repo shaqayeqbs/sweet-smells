@@ -2,18 +2,22 @@ import Search from "../../icons/search";
 import User from "../../icons/user";
 import { useEffect, useState } from "react";
 import ShoppingBag from "../../icons/shopping-bag";
-import { useSession, signOut } from "next-auth/client";
+import { useSession, signOut, getProviders } from "next-auth/client";
 import Logout from "../../icons/logout";
 import classes from "./muiNav.module.css";
 import Link from "next/link";
 import React from "react";
-import Button from "@mui/material/Button";
 import { useSelector } from "react-redux";
 import CustomizedTooltips from "./tooltip/tooltip";
 import Add from "../../icons/add";
 
 function NavItem(props) {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+  const [session] = useSession();
+  const username = session?.session?.user?.name;
+
+  const isAdmin = session?.session?.user?.isAdmin === "admin" ? true : false;
+  console.log(session, "session");
 
   const items = useSelector((state) => state.cart.items);
   const numberOfCartItems = items.reduce((curNumber, item) => {
@@ -37,12 +41,10 @@ function NavItem(props) {
       clearTimeout(timer);
     };
   }, [items]);
-
-  const [session] = useSession();
-  const username = session?.user?.name;
   const logoutHandler = () => {
     signOut();
   };
+  
   const navItems = [
     <div>
       {!session && (
@@ -54,7 +56,7 @@ function NavItem(props) {
       )}
     </div>,
     <div>
-      {session && (
+      {isAdmin && (
         <Link href="/admin/add-new-product" passHref>
           <a className={classes.icon}>
             <Add />
@@ -105,9 +107,13 @@ function NavItem(props) {
   return (
     <>
       {navItems.map((item, index) => (
-        <Button key={index} sx={{ color: "black", background: "white" }}>
+        <div
+          className={classes.container}
+          key={index}
+          sx={{ color: "black", background: "white" }}
+        >
           {item}
-        </Button>
+        </div>
       ))}
     </>
   );

@@ -7,7 +7,6 @@ import { connectToDatabase } from "../../../lib/db";
 
 import CredentialsProvider from "next-auth/providers/credentials";
 
-let myuser;
 export default NextAuth({
   session: {
     strategy: "jwt",
@@ -21,7 +20,7 @@ export default NextAuth({
 
         const usersCollection = client.db().collection("users");
 
-        myuser = await usersCollection.findOne({
+        const myuser = await usersCollection.findOne({
           email: credentials.email,
         });
 
@@ -40,12 +39,10 @@ export default NextAuth({
           throw new Error("Could not log you in!");
         }
 
-        console.log(myuser.rule, "heyyyyyyyyyyyyyyyyyyyy", myuser);
         client.close();
         return {
           name: myuser.name,
           email: myuser.email,
-          image: myuser.rule,
           gender: myuser.gender,
           rule: myuser.rule,
         };
@@ -53,22 +50,43 @@ export default NextAuth({
     }),
   ],
   // callbacks: {
-  //   async jwt({ token, account }) {
-  //     console.log(token, account, "acooooooooo");
-  //     // Persist the OAuth access_token to the token right after signin
-  //     if (account) {
-  //       token.accessToken = account.access_token;
-  //       return token;
-  //     }
-  //   },
-  //   async session({ session, token, user }) {
-  //     console.log(session, token, user, "seeeeeeeeeeeeeeeeee", myuser.rule);
-  //     if (session) {
-  //       session.user.isAdmin = myuser.rule;
-  //       // Send properties to the client, like an access_token from a provider.
-  //       // session.accessToken = token.accessToken;
+  //   session: async (session, user) => {
+  //     console.log(
+  //       user,
+  //       ":((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((("
+  //     );
+  //     session.user.isAdmin = user.rule;
+
+  //     if (myuser) {
+  //       console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeee");
+  //       session.user.gender = myuser.gender;
   //       return Promise.resolve(session);
   //     }
+  //     return session;
   //   },
   // },
+  callbacks: {
+    session: async (session) => {
+      if (!session) return;
+
+      const client = await connectToDatabase();
+      const usersCollection = client.db().collection("users");
+
+      const userData = await usersCollection.findOne({
+        email: session.user.email,
+      });
+
+      return {
+        session: {
+          user: {
+            id: userData._id,
+            name: userData.name,
+            gender: userData.gender,
+            isAdmin: userData.rule,
+            email: userData.email,
+          },
+        },
+      };
+    },
+  },
 });

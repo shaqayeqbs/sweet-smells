@@ -1,6 +1,6 @@
 .contaienr {
   display: flex;
-  place-content: start;
+  place-content: flex-start;
   margin: 9rem auto;
   width: 90%;
 }
@@ -20,7 +20,6 @@
 .imgcontainer {
   margin: 0 auto;
   position: relative;
-
 }
 .img {
   display: inline-block;
@@ -37,4 +36,53 @@
   border-radius: 10rem;
   position: absolute;
   top: 50%;
+}
+
+.moblink {
+  display: none;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  background-color: black;
+
+  width: 90%;
+  font-size: 18px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 6px;
+}
+.moblink:hover,
+.moblink:focus {
+  color: rgb(156, 84, 223);
+}
+
+@media only screen and (max-width: 800px) {
+  .contaienr {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+  }
+  .moblink {
+    display: block;
+  }
+
+  .contaienr h2 {
+    margin: 4rem 2rem;
+
+    color: black;
+    font-weight: 400;
+  }
+  .contaienr h3 {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 2rem;
+    width: 80%;
+    border-left: 3px solid gray;
+    padding-left: 3rem;
+  }
+
+  .img img {
+    display: none;
+  }
 }

@@ -38,3 +38,14 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 768px) {
+  .modal {
+    width: 65%;
+    min-width: 17rem;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+}
