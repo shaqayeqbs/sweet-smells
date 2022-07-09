@@ -1,6 +1,6 @@
-import Modal from "../UI/Modal";
+import Modal from "../ui/modal";
 import CartItem from "./CartItem";
-import classes from "./Cart.module.css";
+import classes from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "./index";
 
