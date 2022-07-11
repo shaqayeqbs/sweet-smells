@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const EditProductForm = (props) => {
   const { size, id, image, title, price, gender } = props;
-  let femalechecked = gender === "women" ? true : false;
+  let femalechecked = gender === "female" ? true : false;
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -16,7 +16,8 @@ const EditProductForm = (props) => {
   const imageInputRef = useRef();
   const priceInputRef = useRef();
   const sizeInputRef = useRef();
-  const genderRef = useRef();
+  const femaleRef = useRef();
+  const maleRef = useRef();
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -24,7 +25,18 @@ const EditProductForm = (props) => {
     const enteredImage = imageInputRef.current.value;
     const enteredPrice = priceInputRef.current.value;
     const enteredSize = sizeInputRef.current.value;
-    const enteredGender = genderInputRef.current.value;
+    const enteredGender = femaleRef.current.checked ? "women" : "men";
+
+    if (
+      enteredTitle === title &&
+      enteredImage === image &&
+      enteredGender === gender &&
+      enteredPrice === price &&
+      enteredSize === size
+    ) {
+      dispatch(messageActions.setMessage("There is No new update!"));
+      return;
+    }
 
     const perfume = {
       id,
@@ -36,11 +48,11 @@ const EditProductForm = (props) => {
     };
 
     const res = await EditPerfume(perfume);
-    console.log("done");
+
     dispatch(messageActions.setMessage(res.message));
     dispatch(messageActions.cleanMessage());
 
-    router.replace("/perfumes");
+    router.replace(`/perfumes/${id}`);
   };
   return (
     <div className={classes.container}>
@@ -88,25 +100,24 @@ const EditProductForm = (props) => {
         </div>
 
         <div className={classes.controlradio}>
-
-        <input
-          type="radio"
-          id="female"
-          name="gender"
-          value="female"
-          defaultChecked={femalechecked}
-          ref={genderRef}
-        />
-        <label htmlFor="female">female</label>
-        <input
-          type="radio"
-          id="male"
-          value="male"
-          defaultChecked={!femalechecked}
-          name="gender"
-          ref={genderRef}
-        />
-        <label htmlFor="male">male</label>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+            defaultChecked={femalechecked}
+            ref={femaleRef}
+          />
+          <label htmlFor="female">female</label>
+          <input
+            type="radio"
+            id="male"
+            value="male"
+            defaultChecked={!femalechecked}
+            name="gender"
+            ref={maleRef}
+          />
+          <label htmlFor="male">male</label>
         </div>
 
         <div className={classes.actions}>

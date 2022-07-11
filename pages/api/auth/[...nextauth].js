@@ -14,7 +14,7 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials, req) {
-        console.log(credentials);
+
         const client = await connectToDatabase();
 
         const usersCollection = client.db().collection("users");
@@ -48,22 +48,7 @@ export default NextAuth({
       },
     }),
   ],
-  // callbacks: {
-  //   session: async (session, user) => {
-  //     console.log(
-  //       user,
-  //       ":((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((("
-  //     );
-  //     session.user.isAdmin = user.rule;
 
-  //     if (myuser) {
-  //       console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeee");
-  //       session.user.gender = myuser.gender;
-  //       return Promise.resolve(session);
-  //     }
-  //     return session;
-  //   },
-  // },
   callbacks: {
     session: async (session) => {
       if (!session) return;

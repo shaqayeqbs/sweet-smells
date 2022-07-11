@@ -5,9 +5,9 @@ async function handler(req, res) {
   if (req.method !== "POST") {
     return;
   }
-  console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiii", req.query);
+
   const id = req.query.id;
-  console.log(id, "idddddddddddddd");
+
   const client = await connectToDatabase();
   try {
     const db = client.db();

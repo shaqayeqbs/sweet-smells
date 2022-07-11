@@ -1,5 +1,5 @@
 import { getSession } from "next-auth/client";
-import { getAllPerfumes } from "../../../../modules/shop/service";
+import { connectToDatabase } from "../../../../lib/db";
 import Form from "../../../../modules/admin/edit/form";
 
 function EditPage(props) {
@@ -20,7 +20,15 @@ export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
   const { params } = context;
   const id = params.id;
-  const data = await getAllPerfumes();
+  const client = await connectToDatabase();
+  const Collection = client.db().collection("perfumes");
+  const data1 = await Collection.find().toArray();
+  const respnse = JSON.stringify({ perfumes: data1 });
+  const data = JSON.parse(respnse);
+  client.close();
+  if (!data) {
+    return <p>Something went wrong!</p>;
+  }
   const perfum = data.perfumes.find((perfume) => perfume._id === id);
 
   if (!session) {

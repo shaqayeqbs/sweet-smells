@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "rc-footer";
 import "rc-footer/assets/index.css";
+import Image from "next/image";
 
 export default function App() {
   return (

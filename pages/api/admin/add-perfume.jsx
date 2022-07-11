@@ -38,7 +38,7 @@ async function handler(req, res) {
     price,
   });
 
-  res.status(201).json({ message: " Perfume Created!" });
+  res.status(201).json({ message: "Perfume Created!" });
   client.close();
 }
 

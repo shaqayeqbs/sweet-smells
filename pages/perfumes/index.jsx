@@ -1,9 +1,11 @@
 import React from "react";
-import { getAllPerfumes } from "../../modules/shop/service";
+
 import List from "../../modules/shop/list";
 import Head from "next/head";
+import { connectToDatabase } from "../../lib/db";
 const AllPerfume = (props) => {
   const { perfumes } = props.items;
+
   return (
     <div>
       <Head>
@@ -18,7 +20,12 @@ const AllPerfume = (props) => {
 export default AllPerfume;
 
 export async function getStaticProps() {
-  const perfumes = await getAllPerfumes();
+  const client = await connectToDatabase();
+  const Collection = client.db().collection("perfumes");
+  const data = await Collection.find().toArray();
+  const respnse = JSON.stringify({ perfumes: data });
+  const perfumes = JSON.parse(respnse);
+  client.close();
 
   if (perfumes.length === 0) {
     return { notFound: true };
@@ -28,6 +35,6 @@ export async function getStaticProps() {
     props: {
       items: perfumes,
     },
-    revalidate: 1800,
+    revalidate: 5,
   };
 }

@@ -1,10 +1,9 @@
 import List from "../modules/shop/list";
-import { getAllPerfumes } from "../modules/shop/service";
 import Head from "next/head";
+import {connectToDatabase} from "../lib/db";
 
 const FilteredPage = (props) => {
   const { perfumes } = props;
-
   if (!perfumes || perfumes.length === 0) {
     return (
       <div>
@@ -31,7 +30,12 @@ export async function getStaticProps(context) {
   const { params } = context;
   const gender = params.gender;
 
-  const data = await getAllPerfumes();
+  const client = await connectToDatabase();
+  const Collection = client.db().collection("perfumes");
+  const data1 = await Collection.find().toArray();
+  const respnse = JSON.stringify({ perfumes: data1 });
+  const data = JSON.parse(respnse);
+  client.close();
 
   const perfumes = data.perfumes.filter((perfume) => perfume.gender === gender);
 
@@ -47,7 +51,12 @@ export async function getStaticProps(context) {
   };
 }
 export async function getStaticPaths() {
-  const data = await getAllPerfumes();
+  const client = await connectToDatabase();
+  const Collection = client.db().collection("perfumes");
+  const data1 = await Collection.find().toArray();
+  const respnse = JSON.stringify({ perfumes: data1 });
+  const data = JSON.parse(respnse);
+  client.close();
   const paths = data.perfumes.map((perfumes) => ({
     params: { gender: perfumes.gender },
   }));

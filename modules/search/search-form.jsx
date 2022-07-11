@@ -16,7 +16,7 @@ const Search = () => {
   const onChange = useCallback(async (event) => {
     const query = event.target.value;
     setQuery(query);
-    console.log(query);
+
     if (query.length) {
       fetch(searchEndpoint(query))
         .then((res) => res.json())

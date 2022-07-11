@@ -17,7 +17,7 @@ function NavItem(props) {
   const username = session?.session?.user?.name;
 
   const isAdmin = session?.session?.user?.isAdmin === "admin" ? true : false;
-  console.log(session, "session");
+
 
   const items = useSelector((state) => state.cart.items);
   const numberOfCartItems = items.reduce((curNumber, item) => {

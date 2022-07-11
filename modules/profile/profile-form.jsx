@@ -12,7 +12,7 @@ function ProfileForm(props) {
   const username = session?.session?.user?.name;
   const email = session?.session?.user.email;
   const gender = session?.session?.user.gender;
-  console.log(gender, "eeeee");
+
   const femalechecked = gender === "female" ? true : false;
 
   ///
@@ -26,9 +26,8 @@ function ProfileForm(props) {
 
     const enteredname = nameRef.current.value;
     const enteredemail = emailRef.current.value;
-    const enteredgender =
-      femaleRef.current.value === "female" ? "female" : "male";
-    console.log(enteredgender, "ey baba");
+    const enteredgender = femaleRef.current.checked ? "female" : "male";
+
     if (
       enteredname === username &&
       enteredemail === email &&
@@ -43,7 +42,6 @@ function ProfileForm(props) {
       email: enteredemail,
       gender: enteredgender,
     });
-    router.replace("/");
   }
 
   return (

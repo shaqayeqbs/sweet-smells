@@ -5,6 +5,7 @@ import { deletePerfume } from "../../admin/delete/service";
 import { useDispatch } from "react-redux";
 import { messageActions } from "../../message/index";
 import { useSession } from "next-auth/client";
+import { cartActions } from "../../cart/index";
 
 const ItemForm = (props) => {
   const amountInputRef = useRef();
@@ -12,14 +13,13 @@ const ItemForm = (props) => {
   const router = useRouter();
   const [session, loading] = useSession();
   const isAdmin = session?.session?.user?.isAdmin === "admin" ? true : false;
-  console.log(isAdmin);
 
   const submitHandler = (event) => {
+    event.preventDefault();
     if (!session) {
       dispatch(messageActions.setMessage("you should login first!"));
-      // router.replace("/auth");
+      return;
     }
-    event.preventDefault();
 
     const enteredAmount = amountInputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
@@ -28,8 +28,9 @@ const ItemForm = (props) => {
   };
   const deleteHandler = async (event) => {
     event.preventDefault();
+    dispatch(cartActions.removeAllItem(props.id));
+
     const res = await deletePerfume(props.id);
-    console.log(res.message);
     dispatch(messageActions.setMessage(res.message));
     router.replace("/perfumes");
   };

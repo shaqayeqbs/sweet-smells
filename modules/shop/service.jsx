@@ -1,14 +1,13 @@
 export async function getAllPerfumes() {
-  const dev = process.env.NODE_ENV !== "production";
-
-  const server = dev
-    ? "http://localhost:3000"
-    : "https://your_deployment.server.com";
+ 
   const controller = new AbortController();
+  
   setTimeout(() => {
     controller.abort();
   }, 25000);
-  const res = await fetch(`${server}/api/perfumes`, {
+
+  
+  const res = await fetch("http://localhost:3000/api/perfumes", {
     method: "GET",
     signal: controller.signal,
     headers: {

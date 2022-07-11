@@ -34,7 +34,9 @@ const AddProductForm = () => {
     const res = await AddPerfume(perfume);
     dispatch(messageActions.setMessage(res.message));
     dispatch(messageActions.cleanMessage());
-    router.replace("/perfumes");
+    if (res.message === "Perfume Created!") {
+      router.replace("/perfumes");
+    }
   };
   return (
     <div className={classes.container}>
@@ -68,7 +70,6 @@ const AddProductForm = () => {
             id="female"
             name="gender"
             value="female"
-         
             ref={genderInputRef}
           />
           <label htmlFor="female">female</label>
@@ -76,7 +77,6 @@ const AddProductForm = () => {
             type="radio"
             id="male"
             value="male"
-         
             name="gender"
             ref={genderInputRef}
           />

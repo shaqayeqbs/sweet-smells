@@ -1,5 +1,4 @@
 export async function deletePerfume(data) {
-  console.log(data, "dataaaaaaaaaaaaaaaaa");
   try {
     const res = await fetch("/api/admin/delete/" + data, {
       method: "POST",
