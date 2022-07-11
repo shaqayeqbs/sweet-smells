@@ -18,7 +18,6 @@ function NavItem(props) {
 
   const isAdmin = session?.session?.user?.isAdmin === "admin" ? true : false;
 
-
   const items = useSelector((state) => state.cart.items);
   const numberOfCartItems = items.reduce((curNumber, item) => {
     return curNumber + item.amount;
@@ -44,7 +43,7 @@ function NavItem(props) {
   const logoutHandler = () => {
     signOut();
   };
-  
+
   const navItems = [
     <div>
       {!session && (
@@ -86,8 +85,9 @@ function NavItem(props) {
       {" "}
       {session && (
         <button className={btnClasses} onClick={props.onShowCart}>
-          <ShoppingBag />
-
+          <div className={classes.mobbtn}>
+            <ShoppingBag />
+          </div>
           <div className={classes.parent}>
             <span className={classes.badge}>{numberOfCartItems}</span>
           </div>

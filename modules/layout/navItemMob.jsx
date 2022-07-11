@@ -72,7 +72,9 @@ function NavItem(props) {
     <div>
       {session && (
         <button className={classes.mobIcon} onClick={logoutHandler}>
-          <Logout />
+          <div className={classes.mobbtn}>
+            <Logout />
+          </div>
         </button>
       )}
     </div>,

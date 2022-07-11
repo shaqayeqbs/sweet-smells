@@ -59,3 +59,8 @@
 .control input:focus {
   border: none;
 }
+@media only screen and (max-width: 800px) {
+  .form{
+   
+  }
+}

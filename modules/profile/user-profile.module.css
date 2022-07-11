@@ -31,5 +31,17 @@
     width: 100%;
     display: block;
     overflow: hidden;
+    margin: 1rem 0;
+  }
+  .pro {
+    margin: 0 auto;
+    width: 25rem;
+    padding: 2rem;
+  }
+  .changepass {
+    margin: 1rem auto;
+
+    width: 25rem;
+    padding: 2rem;
   }
 }

@@ -1,8 +1,13 @@
 .contaienr {
   display: flex;
   place-content: flex-start;
+  overflow: auto;
+  height: 100%;
   margin: 9rem auto;
   width: 90%;
+}
+.overflow {
+  overflow: auto;
 }
 .contaienr h2 {
   margin: 2rem;
@@ -59,21 +64,23 @@
 
 @media only screen and (max-width: 800px) {
   .contaienr {
+    overflow: hidden;
     display: inline-block;
     margin: 0;
-    width: 100%;
   }
   .moblink {
     display: block;
+    margin-top: 0;
+    margin-left:2rem;
   }
 
   .contaienr h2 {
     margin: 4rem 2rem;
-
     color: black;
     font-weight: 400;
   }
   .contaienr h3 {
+    overflow: hidden;
     font-size: 11px;
     font-weight: 500;
     line-height: 2rem;
