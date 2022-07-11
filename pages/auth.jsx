@@ -3,6 +3,7 @@ import AuthForm from "../modules/auth/auth-form";
 import { getSession } from "next-auth/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +12,6 @@ const Auth = () => {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
-
         router.replace("/");
       } else {
         setIsLoading(false);
@@ -24,6 +24,10 @@ const Auth = () => {
   }
   return (
     <>
+      <Head>
+        <title>auth</title>
+        <meta name="description" content="perfume" />
+      </Head>
       <AuthForm />
     </>
   );
